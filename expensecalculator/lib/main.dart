@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -20,14 +22,19 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Expense Calculator'),
-        ),
-        body: Column(
-          children: const <Widget>[
-            Card(child: Text('Chart!')),
-            Card(child: Text('List of TX')),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text('Expense Calculator'),
+      ),
+      body: Column(
+        children: const <Widget>[
+          SizedBox(
+            width: double.infinity,
+            child:
+                Card(color: Colors.blue, child: Text('Chart!'), elevation: 5),
+          ),
+          Card(child: Text('List of TX')),
+        ],
+      ),
+    );
   }
 }

@@ -4,5 +4,6 @@
         "debouncer",
         "onboarded",
         "proto"
-    ]
+    ],
+    "editor.wordWrap": "off"
 }
