@@ -5,10 +5,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({final Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
       home: MyHomePage(),
@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({final Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expense Calculator'),
@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child:
-                Card(color: Colors.blue, child: Text('Chart!'), elevation: 5),
+                Card(color: Colors.blue, elevation: 5, child: Text('Chart!')),
           ),
           Card(child: Text('List of TX')),
         ],
