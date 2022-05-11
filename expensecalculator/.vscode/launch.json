@@ -1,0 +1,45 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "areahype web",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "chrome",
+      "args": [
+        "--web-renderer",
+        "canvaskit",
+        "--web-hostname=192.168.86.34",
+        "--web-port=4000",
+      ],
+    },
+    {
+      "name": "areahype mobile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "chrome",
+      "args": [
+        "--web-renderer",
+        "canvaskit",
+        "--web-hostname=192.168.1.254",
+        "--web-port=4000",
+      ],
+    },
+    {
+      "name": "areahype",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "areahype (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+  ]
+}
