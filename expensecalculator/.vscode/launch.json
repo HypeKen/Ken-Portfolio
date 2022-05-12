@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "areahype web",
+      "name": "Expense Calculator",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
@@ -18,7 +18,7 @@
       ],
     },
     {
-      "name": "areahype mobile",
+      "name": "expense mobile",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
@@ -31,12 +31,12 @@
       ],
     },
     {
-      "name": "areahype",
+      "name": "expense",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "areahype (profile mode)",
+      "name": "expense (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
