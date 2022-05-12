@@ -1,8 +1,12 @@
 import 'package:expensecalculator/index.dart';
 
 class NewTransaction extends StatelessWidget {
-  NewTransaction({final Key? key}) : super(key: key);
 
+  NewTransaction({
+        required this.addTx,
+    final Key? key,}) : super(key: key);
+  
+  final Function addTx;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
 
@@ -33,7 +37,9 @@ class NewTransaction extends StatelessWidget {
                 primary: Colors.purple,
               ),
               onPressed: () {
-                print(titleController.text);
+                // ignore: avoid_dynamic_calls
+                addTx(
+                    titleController.text, double.parse(amountController.text),);
               },
               child: const Text(
                 'Add Transasction',
@@ -60,6 +66,7 @@ class NewTransaction extends StatelessWidget {
           'amountController',
           amountController,
         ),
-      );
+      )
+    ..add(DiagnosticsProperty<Function>('addTx', addTx));
   }
 }

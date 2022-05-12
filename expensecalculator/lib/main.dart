@@ -33,16 +33,18 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Expense Calculator'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const <Widget>[
-          SizedBox(
-            width: double.infinity,
-            child:
-                Card(color: Colors.blue, elevation: 5, child: Text('Chart!')),
-          ),
-        
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: const <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child:
+                  Card(color: Colors.blue, elevation: 5, child: Text('Chart!')),
+            ),
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }

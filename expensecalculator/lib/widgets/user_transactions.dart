@@ -8,7 +8,7 @@ class UserTransactions extends StatefulWidget {
 }
 
 class _UserTransactionsState extends State<UserTransactions> {
-   final List<Transaction> _userTransactions = <Transaction>[
+  final List<Transaction> _userTransactions = <Transaction>[
     Transaction(
       id: 't1',
       title: 'New Shoes',
@@ -22,10 +22,32 @@ class _UserTransactionsState extends State<UserTransactions> {
       date: DateTime.now(),
     ),
   ];
+
+  void _addNewTransaction(final String txTitle, final double txAmount) {
+    final Transaction newTx = Transaction(
+      title: txTitle,
+      amount: txAmount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
   @override
   Widget build(final BuildContext context) {
     return Column(
-      children: <Widget>[NewTransaction(), const TransactionList()],
+      children: <Widget>[
+        NewTransaction(
+          addTx: _addNewTransaction,
+        ),
+        // ignore: always_specify_types
+        TransactionList(
+          transactions: _userTransactions,
+          // ignore: always_specify_types
+        )
+      ],
     );
   }
 }
