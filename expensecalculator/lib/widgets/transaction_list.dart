@@ -12,7 +12,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 400,
       child: ListView.builder(
         itemBuilder: (final BuildContext ctx, final int index) {
           return Card(
@@ -32,7 +32,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    '\$${transactions[index].amount}',
+                    '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
