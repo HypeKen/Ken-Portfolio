@@ -24,7 +24,7 @@ class TransactionList extends StatelessWidget {
                   height: 200,
                   width: 200,
                   child: Image.asset(
-                    'lib/assets/images/AreaHype.png',
+                    'lib/assets/images/AreaHypeLogo.png',
                     fit: BoxFit.cover,
                   ),
                 ),
