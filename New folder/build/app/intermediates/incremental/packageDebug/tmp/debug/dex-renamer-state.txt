@@ -1,0 +1,4 @@
+#Thu May 12 19:04:23 CDT 2022
+base.0=C\:\\Users\\Ken\\Documents\\GitHub\\expenseCalculator\\Ken-Portfolio\\expensecalculator\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
