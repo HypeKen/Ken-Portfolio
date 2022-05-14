@@ -64,7 +64,7 @@ linter:
     camel_case_types: true
     cancel_subscriptions: true
     cascade_invocations: true
-    cast_nullable_to_non_nullable: true
+    cast_nullable_to_non_nullable: false
     close_sinks: true
     comment_references: true
     constant_identifier_names: true

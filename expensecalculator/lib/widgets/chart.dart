@@ -36,7 +36,6 @@ class Chart extends StatelessWidget {
 
   double get totalSpending {
     return groupedTransactionValues.fold(0, (final sum, final item) {
-      // ignore: cast_nullable_to_non_nullable
       return sum + (item['amount'] as double);
     });
   }
@@ -47,19 +46,14 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: const EdgeInsets.all(20),
       child: SizedBox(
-        height: 300,
-        width: 300,
         child: Row(
           children:
               groupedTransactionValues.map((final Map<String, Object> data) {
             return ChartBar(
-              // ignore: cast_nullable_to_non_nullable
               label: data['day'] as String,
-              // ignore: cast_nullable_to_non_nullable
               spendingAmount: data['amount'] as double,
               spendingPercentage: totalSpending == 0
                   ? 0
-                  // ignore: cast_nullable_to_non_nullable
                   : (data['amount'] as double) / totalSpending,
             );
           }).toList(),
