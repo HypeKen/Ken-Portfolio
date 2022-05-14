@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:expensecalculator/index.dart';
 
 void main() {
@@ -9,9 +11,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Expense Calculator',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      // accentColor: Colors.grey),
+      home: const MyHomePage(),
     );
   }
 }
@@ -27,18 +41,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // late String titleInput;
   final List<Transaction> _userTransactions = <Transaction>[
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'New Shoes',
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Weekly Groceries',
+    //   amount: 16.53,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(final String txTitle, final double txAmount) {
@@ -69,24 +83,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expense Calculator'),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text(
+          'Expense Calculator',
+        ),
         actions: <Widget>[
           IconButton(
+            padding: const EdgeInsets.only(right: 16),
+            iconSize: 30,
             onPressed: () {
               _startAddNewTransaction(context);
             },
             icon: const Icon(Icons.add),
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
-              child:
-                  Card(color: Colors.blue, elevation: 5, child: Text('Chart!')),
+              child: Card(
+                color: Theme.of(context).primaryColor,
+                elevation: 5,
+                child: const Text('Chart!'),
+              ),
             ),
             TransactionList(transactions: _userTransactions),
           ],

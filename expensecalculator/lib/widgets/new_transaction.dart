@@ -66,7 +66,7 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             TextButton(
               style: TextButton.styleFrom(
-                primary: Colors.purple,
+                primary: Colors.red,
               ),
               onPressed: () {
                 // ignore: avoid_dynamic_calls
