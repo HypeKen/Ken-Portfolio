@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Expense Calculator",
+      "name": "Expense Calculator web",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
@@ -18,7 +18,7 @@
       ],
     },
     {
-      "name": "expense mobile",
+      "name": "Expense Calculator mobile",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
@@ -31,12 +31,12 @@
       ],
     },
     {
-      "name": "expense",
+      "name": "Expense Calculator",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "expense (profile mode)",
+      "name": "Expense Calculator (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
