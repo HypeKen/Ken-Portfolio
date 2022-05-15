@@ -25,6 +25,9 @@ class TransactionList extends StatelessWidget {
                   height: 10,
                 ),
                 SizedBox(
+                  // decoration: const BoxDecoration(
+                  //   borderRadius: BorderRadius.all(Radius.circular(20)),
+                  // ),
                   height: 200,
                   width: 200,
                   child: Image.asset(

@@ -49,8 +49,13 @@ class Chart extends StatelessWidget {
         child: Row(
           children:
               groupedTransactionValues.map((final Map<String, Object> data) {
-            return ChartBar(
-              label: data['day'] as String,
+            return
+
+                //   Text('${data['day']}:${data['amount']}');
+                // }).toList(),
+
+                ChartBar(
+              label: '${data['day']}',
               spendingAmount: data['amount'] as double,
               spendingPercentage: totalSpending == 0
                   ? 0
