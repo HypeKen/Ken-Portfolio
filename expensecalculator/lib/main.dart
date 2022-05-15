@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
+        buttonColor: Colors.white,
       ),
       // accentColor: Colors.grey),
       home: const MyHomePage(),

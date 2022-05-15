@@ -1,4 +1,7 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:expensecalculator/index.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   const NewTransaction({
@@ -18,13 +21,14 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final TextEditingController titleController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
 
-  final TextEditingController amountController = TextEditingController();
+  late DateTime _selectedDate;
 
-  void submitData() {
-    final String enteredTitle = titleController.text;
-    final double enteredAmount = double.parse(amountController.text);
+  void _submitData() {
+    final String enteredTitle = _titleController.text;
+    final double enteredAmount = double.parse(_amountController.text);
 
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
@@ -33,10 +37,27 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addTx(
       enteredTitle,
       enteredAmount,
-      titleController.text,
-      double.parse(amountController.text),
+      _titleController.text,
+      double.parse(_amountController.text),
       Navigator.of(context).pop(),
     );
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2022),
+      lastDate: DateTime.now(),
+      // ignore: always_specify_types
+    ).then((final pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -49,8 +70,8 @@ class _NewTransactionState extends State<NewTransaction> {
           children: <Widget>[
             TextField(
               decoration: const InputDecoration(labelText: 'Title'),
-              controller: titleController,
-              onSubmitted: (final _) => submitData(),
+              controller: _titleController,
+              onSubmitted: (final _) => _submitData(),
               // ignore: always_specify_types
               // onChanged: (final val) {
               //   titleInput = val;
@@ -58,9 +79,9 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Amount'),
-              controller: amountController,
+              controller: _amountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (final _) => submitData(),
+              onSubmitted: (final _) => _submitData(),
               // ignore: always_specify_types
               // onChanged: (final val) => amountInput = val,
             ),
@@ -68,12 +89,19 @@ class _NewTransactionState extends State<NewTransaction> {
               height: 80,
               child: Row(
                 children: <Widget>[
-                  const Text('No Date Chosen'),
+                  Expanded(
+                    child: Text(
+                      // ignore: unnecessary_null_comparison
+                      _selectedDate == null
+                          ? 'No Date Chosen'
+                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
+                    ),
+                  ),
                   TextButton(
                     style: TextButton.styleFrom(
                       textStyle: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {},
+                    onPressed: _presentDatePicker,
                     child: const Text('Choose Date'),
                   ),
                 ],
@@ -86,8 +114,8 @@ class _NewTransactionState extends State<NewTransaction> {
               onPressed: () {
                 // ignore: avoid_dynamic_calls
                 widget.addTx(
-                  titleController.text,
-                  double.parse(amountController.text),
+                  _titleController.text,
+                  double.parse(_amountController.text),
                 );
               },
               child: const Text(
@@ -107,13 +135,13 @@ class _NewTransactionState extends State<NewTransaction> {
       ..add(
         DiagnosticsProperty<TextEditingController>(
           'titleController',
-          titleController,
+          _titleController,
         ),
       )
       ..add(
         DiagnosticsProperty<TextEditingController>(
           'amountController',
-          amountController,
+          _amountController,
         ),
       )
       ..add(DiagnosticsProperty<Function>('addTx', widget.addTx));
