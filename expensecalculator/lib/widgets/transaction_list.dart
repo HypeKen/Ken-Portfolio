@@ -54,19 +54,22 @@ class TransactionList extends StatelessWidget {
                     vertical: 5,
                   ),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        child: FittedBox(
-                          child: Text(
-                            '\$${transactions[index].amount}',
-                          ),
+                    trailing: FittedBox(
+                      child: Text(
+                        '\$${transactions[index].amount}',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
                     title: Text(
                       transactions[index].title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),

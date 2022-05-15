@@ -64,10 +64,25 @@ class _NewTransactionState extends State<NewTransaction> {
               // ignore: always_specify_types
               // onChanged: (final val) => amountInput = val,
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.red,
+            SizedBox(
+              height: 80,
+              child: Row(
+                children: <Widget>[
+                  const Text('No Date Chosen'),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {},
+                    child: const Text('Choose Date'),
+                  ),
+                ],
               ),
+            ),
+            ElevatedButton(
+              // style: TextButton.styleFrom(
+              //   primary: Colors.red,
+              // ),
               onPressed: () {
                 // ignore: avoid_dynamic_calls
                 widget.addTx(
