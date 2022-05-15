@@ -23,20 +23,25 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
-
-  late DateTime _selectedDate;
+  DateTime _selectedDate = DateTime.now();
 
   void _submitData() {
     final String enteredTitle = _titleController.text;
     final double enteredAmount = double.parse(_amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+    if (_amountController.text.isEmpty) {
+      return;
+    }
+
+    // ignore: unnecessary_null_comparison
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
     // ignore: avoid_dynamic_calls
     widget.addTx(
       enteredTitle,
       enteredAmount,
+      _selectedDate,
       _titleController.text,
       double.parse(_amountController.text),
       Navigator.of(context).pop(),
