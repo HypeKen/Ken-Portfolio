@@ -121,8 +121,10 @@ class _NewTransactionState extends State<NewTransaction> {
                 widget.addTx(
                   _titleController.text,
                   double.parse(_amountController.text),
+                  Navigator.of(context).pop(),
                 );
               },
+
               child: const Text(
                 'Add Transaction',
               ),
