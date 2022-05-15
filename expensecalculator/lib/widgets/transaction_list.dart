@@ -20,19 +20,27 @@ class TransactionList extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text('No transactions added yet!'),
-                const SizedBox(
-                  height: 10,
+                const Text(
+                  'No transactions added yet!',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
-                SizedBox(
-                  // decoration: const BoxDecoration(
-                  //   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  // ),
-                  height: 200,
-                  width: 200,
-                  child: Image.asset(
-                    'lib/assets/images/AreaHypeLogo.png',
-                    fit: BoxFit.cover,
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  height: 150,
+                  width: 150,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      'lib/assets/images/AreaHypeLogo.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
