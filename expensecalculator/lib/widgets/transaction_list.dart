@@ -4,10 +4,12 @@ import 'package:intl/intl.dart';
 class TransactionList extends StatelessWidget {
   const TransactionList({
     required this.transactions,
+    required this.deleteTx,
     final Key? key,
   }) : super(key: key);
 
   final List<Transaction> transactions;
+  final Function deleteTx;
 
   @override
   Widget build(final BuildContext context) {
@@ -54,14 +56,27 @@ class TransactionList extends StatelessWidget {
                     vertical: 5,
                   ),
                   child: ListTile(
-                    trailing: FittedBox(
-                      child: Text(
-                        '\$${transactions[index].amount}',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Theme.of(context).primaryColor,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        FittedBox(
+                          child: Text(
+                            '\$${transactions[index].amount}',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
                         ),
-                      ),
+                        IconButton(
+                          // ignore: avoid_dynamic_calls
+                          onPressed: () => deleteTx(
+                            transactions[index].id,
+                          ),
+                          icon: const Icon(Icons.delete),
+                          iconSize: 22,
+                        ),
+                      ],
                     ),
                     title: Text(
                       transactions[index].title,
@@ -133,6 +148,8 @@ class TransactionList extends StatelessWidget {
   @override
   void debugFillProperties(final DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(IterableProperty<Transaction>('transactions', transactions));
+    properties
+      ..add(IterableProperty<Transaction>('transactions', transactions))
+      ..add(DiagnosticsProperty<Function>('deleteTx', deleteTx));
   }
 }
