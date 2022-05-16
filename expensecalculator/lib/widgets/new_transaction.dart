@@ -29,12 +29,12 @@ class _NewTransactionState extends State<NewTransaction> {
     final String enteredTitle = _titleController.text;
     final double enteredAmount = double.parse(_amountController.text);
 
-    if (_amountController.text.isEmpty) {
+    // ignore: unnecessary_null_comparison
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
 
-    // ignore: unnecessary_null_comparison
-    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
+    if (_amountController.text.isEmpty) {
       return;
     }
     // ignore: avoid_dynamic_calls
@@ -42,10 +42,10 @@ class _NewTransactionState extends State<NewTransaction> {
       enteredTitle,
       enteredAmount,
       _selectedDate,
-      _titleController.text,
-      double.parse(_amountController.text),
-      Navigator.of(context).pop(),
+      // _titleController.text,
+      // double.parse(_amountController.text),
     );
+    Navigator.pop(context);
   }
 
   void _presentDatePicker() {
@@ -116,15 +116,18 @@ class _NewTransactionState extends State<NewTransaction> {
               // style: TextButton.styleFrom(
               //   primary: Colors.red,
               // ),
-              onPressed: () {
-                // ignore: avoid_dynamic_calls
-                widget.addTx(
-                  // _selectedDate,
-                  _titleController.text,
-                  double.parse(_amountController.text),
-                  // Navigator.of(context).pop(),
-                );
-              },
+
+              onPressed: _submitData,
+              // Navigator.of(context).pop();
+
+              // () {
+              //   // ignore: avoid_dynamic_calls
+              //   widget.addTx(
+              //     _selectedDate,
+              //     _titleController.text,
+              //     double.parse(_amountController.text),
+              //   );
+              // },
 
               child: const Text(
                 'Add Transaction',
