@@ -119,9 +119,10 @@ class _NewTransactionState extends State<NewTransaction> {
               onPressed: () {
                 // ignore: avoid_dynamic_calls
                 widget.addTx(
+                  // _selectedDate,
                   _titleController.text,
                   double.parse(_amountController.text),
-                  Navigator.of(context).pop(),
+                  // Navigator.of(context).pop(),
                 );
               },
 
