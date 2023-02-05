@@ -43,7 +43,7 @@ elif step1 == "left":
 
         if step3 == "blue":
             print("Game Over")
-        if step3 == "red":
+        elif step3 == "red":
             print("Game Over")
         elif step3 == "yellow":
             print("You got the booty!")
